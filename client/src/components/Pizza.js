@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import {useDispatch,useSelector} from 'react-redux'
+
+import {addToCart} from '../actions/cartAction.js'
 
 export default function Pizza({ pizza }) {
 
@@ -10,8 +13,43 @@ export default function Pizza({ pizza }) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const dispatch = useDispatch()
+
+    function addtocart() {
+        // // console.log('pizza',pizza)
+        // // console.log('varient',varient)
+        // // console.log('quantity',qunatity)
+        // // console.log('price',pizza.prices[0][varient]*qunatity)
+        // // console.log('image',pizza.image)
+        // // console.log('name',pizza.name)
+
+        // // console.log('id',pizza._id)
+
+        // let cart = []
+        // if (typeof window !== undefined) {
+        //     if (localStorage.getItem('cart')) {
+        //         cart = JSON.parse(localStorage.getItem('cart'))
+        //     }
+
+        //     cart.push({
+        //         ...pizza,
+        //         varient: varient,
+        //         quantity: qunatity,
+        //         prices: pizza.prices[0][varient] * qunatity
+        //     })
+
+        //     localStorage.setItem('cart', JSON.stringify(cart))
+        //     console.log('cart', cart)
+        // }
+
+        dispatch(addToCart(pizza,qunatity,varient))
+    }
+
+
+
     return (
-        <div style={{ margin: '70px' }} className="shadow-lg p-3 mb-5 bg-white rounded">
+        <div className="shadow-lg p-3 mb-5 bg-white rounded">
 
             <div onClick={handleShow}>
                 <h1>{pizza.name}</h1>
@@ -23,12 +61,23 @@ export default function Pizza({ pizza }) {
             <div className='flex-container'>
 
 
+
+
+
+
                 <div className='w-100 m-1'>
                     <p>Varients</p>
                     <select className='form-control' value={varient} onChange={(e) => { setVarient(e.target.value) }}>
-                        {pizza.varients.map(varient => {
+                        {/* {pizza.varients.map(varient => {
                             return <option value={varient}>{varient}</option>
-                        })}
+                            // console.log(varient)
+                        })} */}
+
+                        {pizza.variants.map((variant, index) => (
+                            <option key={index} value={variant}>
+                                {variant}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -52,7 +101,7 @@ export default function Pizza({ pizza }) {
 
                 </div>
                 <div className='m-1 w-100'>
-                    <button className='btn'>ADD TO CART</button>
+                    <button className='btn' onClick={addtocart}>ADD TO CART</button>
                 </div>
 
 
@@ -64,7 +113,7 @@ export default function Pizza({ pizza }) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <img src={pizza.image} className = 'img-fluid' style={{height:'300px'}}/>
+                    <img src={pizza.image} className='img-fluid' style={{ height: '300px' }} />
                     <p>{pizza.description}</p>
                 </Modal.Body>
 

@@ -1,7 +1,13 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+
+
 
 
 export default function () {
+    const cartState = useSelector(state => state.addToCartReducer)
+    const dispatch = useDispatch()
     return (
         <div>
 
@@ -15,12 +21,12 @@ export default function () {
                         <li className="nav-item">
                             <a className="nav-link" href="#">
                                 Login
-                                </a>
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Cart
-                                </a>
+                            <a className="nav-link" href="/Cart">
+                                Cart {cartState.cartItems.length}
+                            </a>
                         </li>
                     </ul>
                 </div>
