@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Homescreen from './screens/Homescreen';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homescreen />} />
           <Route path="/cart" element={<CartScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
         </Routes>
       </Router>
     </div>

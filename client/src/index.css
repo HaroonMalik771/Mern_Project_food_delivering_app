@@ -48,3 +48,31 @@ select{
   margin: 5px !important; 
 } 
 
+/* input{
+  border: none !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+} */
+
+
+
+/* Apply styles to all input fields */
+input {
+  border: none !important;
+  border: 1px solid black !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  padding: 8px 12px !important; /* Adjust padding as needed for spacing inside the input */
+  margin-bottom: 10px !important; /* Add margin-bottom for a gap between input fields */
+  transition: border-color 0.3s ease !important;
+}
+
+/* Apply styles to the focused input field */
+input:focus {
+  outline: none !important;
+  border-color: skyblue !important;
+}
+
+
+
