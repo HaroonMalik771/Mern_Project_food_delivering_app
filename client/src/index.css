@@ -32,3 +32,19 @@ select{
   border-color: black !important;
 }
 
+.text-left {
+  text-align: left;
+}
+.fa-plus{
+  color: green !important;
+  margin: 5px !important;
+}
+.fa-minus{
+  color: red !important;
+  margin: 5px !important; 
+}
+.fa-trash{
+  color: red !important;
+  margin: 5px !important; 
+} 
+

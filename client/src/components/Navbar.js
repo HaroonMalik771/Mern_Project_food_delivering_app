@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 export default function () {
-    const cartState = useSelector(state => state.addToCartReducer)
+    const cartState = useSelector(state => state.cartReducer)
     const dispatch = useDispatch()
     return (
         <div>
