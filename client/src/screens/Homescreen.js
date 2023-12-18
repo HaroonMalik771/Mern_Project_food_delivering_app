@@ -6,6 +6,8 @@ import { getAllPizzas } from '../actions/pizzaAction.js'
 
 // import pizzas from '../pizzasdata'
 import Pizza from '../components/Pizza'
+import Loading from '../components/loading'
+import Error from '../components/error'
 
 
 export default function Homescreen() {
@@ -29,7 +31,7 @@ export default function Homescreen() {
         <div>
             <div className='row justify-content-center'>
 
-                {loading ? (<h1>Loading...</h1>) : error ? (<h1>Something Went Wrong!</h1>) : 
+                {loading ? (<Loading/>) : error ? (<Error error='Something Went Wrong'/>) : 
                         (
 
                     pizzas.map(pizza => {

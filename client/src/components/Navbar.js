@@ -1,5 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Dropdown } from 'react-bootstrap';
+import { logoutUser } from '../actions/userAction';
+
+
 
 
 
@@ -10,6 +14,8 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function () {
     const cartState = useSelector(state => state.cartReducer)
     const dispatch = useDispatch()
+    const userState = useSelector(state => state.loginUserReducer)
+    const { currentUser } = userState
     return (
         <div>
 
@@ -20,11 +26,43 @@ export default function () {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
+
+
+                        {/* {currentUser ? <div className="dropdown">
+                            <a className=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {currentUser.name}
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                
+                                <a className="dropdown-item" href="#">Orders</a>
+                                <a className="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div> : (<li className="nav-item">
                             <a className="nav-link" href="/login">
                                 Login
                             </a>
-                        </li>
+                        </li>)} */}
+                        {currentUser ? (
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    {currentUser.name}
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#">Orders</Dropdown.Item>
+                                    <Dropdown.Item href="#"onClick={()=>{dispatch(logoutUser())}}><li>Logout</li></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        ) : (
+                            <li className="nav-item">
+                                <a className="nav-link" href="/login">
+                                    Login
+                                </a>
+                            </li>
+                        )}
+
+
+
+
                         <li className="nav-item">
                             <a className="nav-link" href="/Cart">
                                 Cart {cartState.cartItems.length}

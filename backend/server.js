@@ -1,11 +1,15 @@
 const express = require("express");
 const Pizza = require("./models/pizzamodel.js");
+const user = require("./models/usermodel.js");
 const app = express();
 app.use(express.json());
  
 const pizzaRoutes = require("./routes/pizzaRoute.js");
+const userRoutes = require("./routes/userRoute.js");
 
 app.use("/api/pizzas", pizzaRoutes);
+app.use("/api/users", userRoutes);
+
 
 
 
