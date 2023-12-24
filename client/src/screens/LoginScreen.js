@@ -27,6 +27,8 @@ import Success from '../components/success'
       console.log('Login clicked');
       console.log('Email:', email);
       console.log('Password:', password);
+     
+
       dispatch(loginUser(user));
     };
 

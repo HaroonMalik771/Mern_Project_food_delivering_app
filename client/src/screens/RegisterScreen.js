@@ -21,6 +21,10 @@ export default function
 
 
     function register() {
+        if (!name || !email || !password || !confirmPassword) {
+            alert('Please fill in all fields');
+            return;
+        }
         if (password != confirmPassword) {
             alert('password not matched')
 

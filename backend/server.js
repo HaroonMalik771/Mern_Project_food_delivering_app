@@ -1,8 +1,18 @@
 const express = require("express");
 const Pizza = require("./models/pizzamodel.js");
 const user = require("./models/usermodel.js");
+const session = require('express-session');
 const app = express();
+
+// Middleware for JSON parsing
 app.use(express.json());
+
+// Session setup
+app.use(session({
+  secret: 'a1b2c3d4e5f6g7h8i9j0!@#$%^&*()', // replace with a secure secret key
+  resave: false,
+  saveUninitialized: false,
+}));
  
 const pizzaRoutes = require("./routes/pizzaRoute.js");
 const userRoutes = require("./routes/userRoute.js");
@@ -28,6 +38,10 @@ app.get("/", (req, res) => {
 app.listen(8000, () => {
   console.log('Server listening on port 8000');
 });
+
+
+
+
 
 
 

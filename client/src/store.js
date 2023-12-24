@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import {createStore, applyMiddleware,} from 'redux';
-import {thunk} from 'redux-thunk';
+import { thunk } from 'redux-thunk';
+
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {getAllPizzasReducer} from '../src/reducers/pizzaReducer';
 import {cartReducer} from '../src/reducers/cartReducer';
@@ -30,7 +31,13 @@ const initialState = {
     }
 };
 
+// const composeEnhancers = composeWithDevTools({});
+// const store = createStore(finalReducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
 const composeEnhancers = composeWithDevTools({});
-const store = createStore(finalReducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(
+  finalReducer,
+  initialState,
+  // Issue: Apply `composeEnhancers` here
+  composeEnhancers(applyMiddleware(thunk)))
 
 export default store;
