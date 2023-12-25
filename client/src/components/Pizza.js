@@ -37,7 +37,7 @@ export default function Pizza({ pizza }) {
         //         varient: varient,
         //         quantity: qunatity,
         //         prices: pizza.prices[0][varient] * qunatity
-        //     })
+        //     }
 
         //     localStorage.setItem('cart', JSON.stringify(cart))
         //     console.log('cart', cart)
