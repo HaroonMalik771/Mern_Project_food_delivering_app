@@ -1,8 +1,15 @@
 const express = require("express");
+const cors = require('cors');
 const Pizza = require("./models/pizzamodel.js");
 const user = require("./models/usermodel.js");
 const session = require('express-session');
+const calculatorRoutes= require("./models/calculatormodel.js")
+
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+
 
 // Middleware for JSON parsing
 app.use(express.json());
@@ -13,12 +20,30 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+
+app.post('/api/calculate', (req, res) => {
+  const { operand1, operand2, operation, result } = req.body;
+
+  
+  console.log('Received data:', { operand1, operand2, operation, result });
+
+ 
+  res.json({ success: true, message: 'Data received successfully' });
+
+});
+
+app.use('/calculator', calculatorRoutes);
  
 const pizzaRoutes = require("./routes/pizzaRoute.js");
 const userRoutes = require("./routes/userRoute.js");
 
+// other imports and middleware...
+
+
 app.use("/api/pizzas", pizzaRoutes);
 app.use("/api/users", userRoutes);
+
 
 
 

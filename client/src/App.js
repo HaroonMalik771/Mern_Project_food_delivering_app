@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import Calculator from './components/calculator';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/calculator" element={<Calculator/>} /> // Add Calculator route
         </Routes>
       </Router>
     </div>
